@@ -112,7 +112,7 @@ window.App = {
         mainEl.appendChild(statsSection);
 
         const closingSection = this.createSection('closing', 'closing-section');
-        closingSection.setAttribute('data-aos', 'fade-up');
+        closingSection.setAttribute('data-aos', 'zoom-in');
         closingSection.innerHTML = `
             <div class="closing-message">
                 <i class="fa-solid fa-quote-right"></i>
@@ -133,7 +133,7 @@ window.App = {
         const footerEl = document.getElementById('footer-placeholder');
         
         footerEl.innerHTML = `
-            <div class="footer-container" data-aos="fade-up">
+            <div class="footer-container">
                 <div class="footer-col">
                     <i class="${footerData.icon}"></i> <strong>${footerData.brand}</strong>
                     <p>${footerData.description}</p>
@@ -146,7 +146,7 @@ window.App = {
                 </div>
                 <div class="footer-col">
                     <h4>Connect</h4>
-                    <div class="social-links" data-aos="zoom-in">
+                    <div class="social-links">
                         ${footerData.social.map(s => `<a href="${s.url}" target="_blank" rel="noopener"><i class="${s.icon}"></i></a>`).join('')}
                     </div>
                 </div>
