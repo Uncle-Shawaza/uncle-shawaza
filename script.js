@@ -70,7 +70,7 @@ window.App = {
                 </div>
                 <div class="profile-right">
                     <p class="profile-desc">${mainData.profile.description}</p>
-                    <button class="btn-scroll" data-target="stats-section">Explore stats <i class="fa-solid fa-arrow-down"></i></button>
+                    <button class="btn-scroll" data-aos="zoom-in" data-target="stats-section">Explore stats <i class="fa-solid fa-arrow-down"></i></button>
                 </div>
             </div>
         `;
@@ -80,7 +80,7 @@ window.App = {
         aboutSection.setAttribute('data-aos', 'fade-up');
         aboutSection.innerHTML = `<h2 class="section-title">Quick glances</h2>` +
             mainData.about.map(item => `
-                <div class="about-item" data-aos="fade-right">
+                <div class="about-item" data-aos="zoom-in">
                     <div class="about-icon"><i class="${item.icon}"></i></div>
                     <div class="about-text">
                         <h3>${item.title}</h3>
@@ -90,7 +90,7 @@ window.App = {
             `).join('');
         mainEl.appendChild(aboutSection);
 
-        const skillsSection = this.createSection('skills', 'skills-section');
+        const skillsSection  = this.createSection('skills', 'skills-section');
         skillsSection.setAttribute('data-aos', 'fade-up');
         skillsSection.innerHTML = `<h2 class="section-title">Tech & tools</h2>` +
             `<div class="skills-cloud">` +
@@ -103,7 +103,7 @@ window.App = {
         statsSection.innerHTML = `<h2 class="section-title">By numbers</h2>` +
             `<div class="stats-grid">` +
             mainData.stats.map(stat => `
-                <div class="stat-card" data-aos="flip-left">
+                <div class="stat-card" data-aos="zoom-in">
                     <div class="stat-value">${stat.value}</div>
                     <div class="stat-label">${stat.label}</div>
                 </div>
@@ -131,13 +131,14 @@ window.App = {
     
     buildFooter: function(footerData) {
         const footerEl = document.getElementById('footer-placeholder');
+        footherEl.setAttribute('data-aos', 'fade-up');
         footerEl.innerHTML = `
             <div class="footer-container">
-                <div class="footer-col">
+                <div class="footer-col" data-aos="zoom-in">
                     <i class="${footerData.icon}"></i> <strong>${footerData.brand}</strong>
                     <p>${footerData.description}</p>
                 </div>
-                <div class="footer-col">
+                <div class="footer-col" data-aos="zoom-in">
                     <h4>Quick</h4>
                     <ul>
                         ${footerData.quickLinks.map(link => `<li><a class="quick-link" data-view="${link.toLowerCase()}">${link}</a></li>`).join('')}
@@ -145,7 +146,7 @@ window.App = {
                 </div>
                 <div class="footer-col">
                     <h4>Connect</h4>
-                    <div class="social-links">
+                    <div class="social-links" data-aos="zoom-in">
                         ${footerData.social.map(s => `<a href="${s.url}" target="_blank" rel="noopener"><i class="${s.icon}"></i></a>`).join('')}
                     </div>
                 </div>
