@@ -19,11 +19,11 @@ window.App = {
     loadAllData: async function() {
         try {
             const [mainRes, codesRes, coursesRes, projectsRes, testimonialsRes] = await Promise.all([
-                fetch('data.json'),
-                fetch('codes.json'),
-                fetch('courses.json'),
-                fetch('projects.json'),
-                fetch('testimonials.json')
+                fetch('/data.json'),
+                fetch('/codes.json'),
+                fetch('/courses.json'),
+                fetch('/projects.json'),
+                fetch('/testimonials.json')
             ]);
             
             this.mainData = await mainRes.json();
