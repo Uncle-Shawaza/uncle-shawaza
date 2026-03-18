@@ -29,7 +29,8 @@ window.Router = {
         const hash = this.currentHash.replace('#', '');
         
         if (!hash || hash === '' || hash === '/') {
-            window.App?.showMainView();
+            //window.App?.showMainView();
+            document.title = 'Uncle Shawaza - Software & Web Developer';
             window.SEOManager?.updateMeta();
             return;
         }
@@ -50,7 +51,9 @@ window.Router = {
                         title = `${parts[2]} - ${parts[1]} | Uncle Shawaza`;
                     }
                 }
-                window.App?.showCodesView(parts[1], parts[2]);
+                if (window.App) {
+                    window.App?.showCodesView(parts[1], parts[2]);
+                }
                 break;
                 
             case 'projects':
@@ -59,7 +62,9 @@ window.Router = {
                 if (parts[1]) {
                     title = `${parts[1]} - Projects | Uncle Shawaza`;
                 }
-                window.App?.showProjectsView(parts[1]);
+                if (window.App) {
+                    window.App?.showProjectsView(parts[1]);
+                }
                 break;
                 
             case 'courses':
@@ -68,8 +73,15 @@ window.Router = {
                 if (parts[1]) {
                     title = `${parts[1]} - Courses | Uncle Shawaza`;
                 }
-                window.App?.showCoursesView(parts[1]);
+                if (window.App) {
+                    window.App?.showCoursesView(parts[1]);
+                }
                 break;
+            default:
+                if (window.App) {
+                    window.App.showMainView();
+                 }
+                 return;
         }
         
         window.SEOManager?.updateMeta(title, description);
@@ -79,6 +91,7 @@ window.Router = {
     navigate: function(path, hash) {
         let url = path || '/portfolio/';
         if (hash) {
+
             url += '#' + hash;
         }
         history.pushState(null, '', url);
