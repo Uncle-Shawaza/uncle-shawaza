@@ -131,14 +131,14 @@ window.App = {
     
     buildFooter: function(footerData) {
         const footerEl = document.getElementById('footer-placeholder');
-        footherEl.setAttribute('data-aos', 'fade-up');
+        
         footerEl.innerHTML = `
-            <div class="footer-container">
-                <div class="footer-col" data-aos="zoom-in">
+            <div class="footer-container" data-aos="fade-up">
+                <div class="footer-col">
                     <i class="${footerData.icon}"></i> <strong>${footerData.brand}</strong>
                     <p>${footerData.description}</p>
                 </div>
-                <div class="footer-col" data-aos="zoom-in">
+                <div class="footer-col">
                     <h4>Quick</h4>
                     <ul>
                         ${footerData.quickLinks.map(link => `<li><a class="quick-link" data-view="${link.toLowerCase()}">${link}</a></li>`).join('')}
