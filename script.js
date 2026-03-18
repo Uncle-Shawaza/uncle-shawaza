@@ -7,22 +7,36 @@ window.App = {
     currentView: 'main',
     currentCategory: null,
     currentItem: null,
+    dataLoaded: false,
     
     init: async function() {
-        await this.loadAllData();
+        
         window.ThemeManager.init();
         window.AnimationManager.init();
+
+        await this.loadAllData();
+
+        const initialHash = window.location.hash.replace('#', '');
+        if (initialHash && initialHash !== '') {
+            if (window.Router) {
+                window.Router.processHash();
+            }
+        } else {
+            this.showMainView();
+            window.SEOManager?.updateMeta();
+        }
+        
         window.Router.init();
     },
     
     loadAllData: async function() {
         try {
             const [mainRes, codesRes, coursesRes, projectsRes, testimonialsRes] = await Promise.all([
-                await fetch('/data.json'),
-                await fetch('/codes.json'),
-                await fetch('/courses.json'),
-                await fetch('/projects.json'),
-                await fetch('/testimonials.json')
+                fetch('/data.json'),
+                fetch('/codes.json'),
+                fetch('/courses.json'),
+                fetch('/projects.json'),
+                fetch('/testimonials.json')
             ]);
             
             this.mainData = await mainRes.json();
@@ -34,7 +48,8 @@ window.App = {
             this.buildMainSections(this.mainData.main);
             this.buildFooter(this.mainData.footer);
             
-            window.Router.processHash();
+            this.dataLoaded = true;
+            //window.Router.processHash();
         } catch (error) {
             console.error('Error loading data:', error);
             document.getElementById('main-content').innerHTML = '<p style="color:red;">Failed to load data.</p>';
