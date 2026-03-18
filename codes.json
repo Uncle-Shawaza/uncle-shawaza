@@ -1,0 +1,47 @@
+{
+    "scrap": {
+        "gemini": {
+            "icon": "fa-brands fa-python",
+            "title": "Gemini Web Scraper",
+            "desc": "Advanced web scraper using Gemini AI for intelligent data extraction",
+            "content": "import requests\nfrom bs4 import BeautifulSoup\nimport pandas as pd\n\ndef scrape_website(url):\n    response = requests.get(url)\n    soup = BeautifulSoup(response.content, 'html.parser')\n    \n    data = []\n    for item in soup.find_all('article'):\n        title = item.find('h2').text if item.find('h2') else ''\n        content = item.find('p').text if item.find('p') else ''\n        data.append({'title': title, 'content': content})\n    \n    df = pd.DataFrame(data)\n    df.to_csv('scraped_data.csv', index=False)\n    return df\n\nif __name__ == '__main__':\n    url = 'https://example.com'\n    result = scrape_website(url)\n    print(f'Scraped {len(result)} items')",
+            "tags": ["python", "scraping", "beautifulsoup", "pandas"]
+        },
+        "selenium_scraper": {
+            "icon": "fa-brands fa-python",
+            "title": "Selenium Dynamic Scraper",
+            "desc": "Handle JavaScript-rendered content with Selenium",
+            "content": "from selenium import webdriver\nfrom selenium.webdriver.common.by import By\nfrom selenium.webdriver.support.ui import WebDriverWait\nfrom selenium.webdriver.support import expected_conditions as EC\nimport time\n\ndef scrape_dynamic(url):\n    driver = webdriver.Chrome()\n    driver.get(url)\n    \n    try:\n        element = WebDriverWait(driver, 10).until(\n            EC.presence_of_element_located((By.CLASS_NAME, \"dynamic-content\"))\n        )\n        \n        # Scroll to load more content\n        for i in range(3):\n            driver.execute_script(\"window.scrollTo(0, document.body.scrollHeight);\")\n            time.sleep(2)\n        \n        items = driver.find_elements(By.CLASS_NAME, \"item\")\n        data = []\n        for item in items:\n            data.append(item.text)\n        \n    finally:\n        driver.quit()\n    \n    return data\n\nif __name__ == '__main__':\n    result = scrape_dynamic('https://example.com/dynamic')\n    print(f'Found {len(result)} items')",
+            "tags": ["python", "selenium", "dynamic", "javascript"]
+        }
+    },
+    "bot": {
+        "wa_bot": {
+            "source": {
+                "content": "const { Client, LocalAuth } = require('whatsapp-web.js');\nconst qrcode = require('qrcode-terminal');\n\nconst client = new Client({\n    authStrategy: new LocalAuth()\n});\n\nclient.on('qr', qr => {\n    qrcode.generate(qr, {small: true});\n});\n\nclient.on('ready', () => {\n    console.log('WhatsApp Bot is ready!');\n});\n\nclient.on('message', async message => {\n    if(message.body === '!ping') {\n        await message.reply('pong');\n    }\n    \n    if(message.body === '!help') {\n        await message.reply('Available commands: !ping, !time, !quote');\n    }\n    \n    if(message.body === '!time') {\n        const now = new Date();\n        await message.reply(`Current time: ${now.toLocaleString()}`);\n    }\n});\n\nclient.initialize();"
+            },
+            "icon": "fa-brands fa-whatsapp",
+            "title": "WhatsApp Bot",
+            "desc": "Feature-rich WhatsApp bot with auto-reply and command system",
+            "tags": ["whatsapp", "bot", "nodejs", "automation"]
+        },
+        "tele_bot": {
+            "source": {
+                "content": "import logging\nfrom telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup\nfrom telegram.ext import Application, CommandHandler, CallbackQueryHandler, ContextTypes\n\nlogging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)\n\nasync def start(update: Update, context: ContextTypes.DEFAULT_TYPE):\n    keyboard = [\n        [InlineKeyboardButton(\"Help\", callback_data='help'),\n         InlineKeyboardButton(\"About\", callback_data='about')],\n        [InlineKeyboardButton(\"Contact\", callback_data='contact')]\n    ]\n    reply_markup = InlineKeyboardMarkup(keyboard)\n    await update.message.reply_text('Hello! I am Uncle Shawaza\\'s Telegram Bot!', reply_markup=reply_markup)\n\nasync def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):\n    query = update.callback_query\n    await query.answer()\n    \n    if query.data == 'help':\n        await query.edit_message_text(text=\"Available commands:\\n/start - Start the bot\\n/help - Show help\")\n    elif query.data == 'about':\n        await query.edit_message_text(text=\"I'm a bot created by Uncle Shawaza to demonstrate Telegram bot capabilities.\")\n    elif query.data == 'contact':\n        await query.edit_message_text(text=\"Contact: @UncleShawaza on Telegram\")\n\ndef main():\n    app = Application.builder().token('YOUR_BOT_TOKEN').build()\n    \n    app.add_handler(CommandHandler('start', start))\n    app.add_handler(CallbackQueryHandler(button_callback))\n    \n    app.run_polling()\n\nif __name__ == '__main__':\n    main()"
+            },
+            "icon": "fa-brands fa-telegram",
+            "title": "Telegram Bot",
+            "desc": "Interactive Telegram bot with inline keyboards and multiple commands",
+            "tags": ["telegram", "bot", "python", "inline-keyboard"]
+        }
+    },
+    "algorithms": {
+        "sorting": {
+            "icon": "fa-solid fa-chart-line",
+            "title": "Sorting Algorithms",
+            "desc": "Implementation of popular sorting algorithms in JavaScript",
+            "content": "// Bubble Sort\nfunction bubbleSort(arr) {\n    const n = arr.length;\n    for (let i = 0; i < n-1; i++) {\n        for (let j = 0; j < n-i-1; j++) {\n            if (arr[j] > arr[j+1]) {\n                [arr[j], arr[j+1]] = [arr[j+1], arr[j]];\n            }\n        }\n    }\n    return arr;\n}\n\n// Quick Sort\nfunction quickSort(arr) {\n    if (arr.length <= 1) return arr;\n    \n    const pivot = arr[Math.floor(arr.length / 2)];\n    const left = arr.filter(x => x < pivot);\n    const middle = arr.filter(x => x === pivot);\n    const right = arr.filter(x => x > pivot);\n    \n    return [...quickSort(left), ...middle, ...quickSort(right)];\n}\n\n// Merge Sort\nfunction mergeSort(arr) {\n    if (arr.length <= 1) return arr;\n    \n    const mid = Math.floor(arr.length / 2);\n    const left = arr.slice(0, mid);\n    const right = arr.slice(mid);\n    \n    return merge(mergeSort(left), mergeSort(right));\n}\n\nfunction merge(left, right) {\n    const result = [];\n    let i = 0, j = 0;\n    \n    while (i < left.length && j < right.length) {\n        if (left[i] < right[j]) {\n            result.push(left[i++]);\n        } else {\n            result.push(right[j++]);\n        }\n    }\n    \n    return [...result, ...left.slice(i), ...right.slice(j)];\n}\n\n// Example usage\nconst arr = [64, 34, 25, 12, 22, 11, 90];\nconsole.log('Bubble Sort:', bubbleSort([...arr]));\nconsole.log('Quick Sort:', quickSort([...arr]));\nconsole.log('Merge Sort:', mergeSort([...arr]));",
+            "tags": ["javascript", "algorithms", "sorting", "data-structures"]
+        }
+    }
+}
