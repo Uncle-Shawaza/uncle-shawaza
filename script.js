@@ -9,11 +9,10 @@ window.App = {
     currentItem: null,
     
     init: async function() {
+        await this.loadAllData();
         window.ThemeManager.init();
         window.AnimationManager.init();
         window.Router.init();
-        
-        await this.loadAllData();
     },
     
     loadAllData: async function() {
