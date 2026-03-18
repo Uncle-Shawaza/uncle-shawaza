@@ -93,7 +93,7 @@ main {
     width: 100%;
     min-height: 100vh;
     margin: 0 auto;
-    padding: 1.5rem 1.5rem;
+    padding: 0.5rem 0.5rem;
 }
 
 footer {
@@ -478,8 +478,7 @@ footer {
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem 1.8rem;
     min-height: 40vh;
-    padding: 1rem 1rem;
-    background: var(--bg-secondary);
+    padding: 0.5rem 0.5rem;
     margin-bottom: 3rem;
 }
 
@@ -525,8 +524,7 @@ footer {
 }
 
 .skills-section {
-    background: var(--bg-tertiary);
-    padding: 2rem 2rem;
+    padding: 0.5rem 0.5rem;
     margin-bottom: 3rem;
 }
 
