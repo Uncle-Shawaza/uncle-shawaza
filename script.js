@@ -57,7 +57,7 @@ window.App = {
             //window.Router.processHash();
         } catch (error) {
             console.error('Error loading data:', error);
-            document.getElementById('main-content').innerHTML = '<p style="color:red;">Failed to load data.</p>';
+            document.getElementById('main-content').innerHTML = `<p style="color:red;">Failed to load data: ${error.message}</p>`;
         }
     },
     
