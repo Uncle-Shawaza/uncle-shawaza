@@ -1,0 +1,92 @@
+{
+    "web_scrap": {
+        "title": "Master Web Scraping",
+        "desc": "Complete guide to web scraping from basics to advanced techniques with Python",
+        "icon": "fa-solid fa-spider",
+        "content": [
+            {
+                "title": "Introduction to Web Scraping",
+                "desc": "Learn what web scraping is, its legal considerations, and ethical practices",
+                "attached": true,
+                "content": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                "duration": "15:30"
+            },
+            {
+                "title": "BeautifulSoup Basics",
+                "desc": "Parsing HTML and extracting data with BeautifulSoup library",
+                "attached": true,
+                "content": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                "duration": "25:45"
+            },
+            {
+                "title": "Handling Dynamic Content",
+                "desc": "Scraping JavaScript-rendered pages with Selenium",
+                "attached": true,
+                "content": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                "duration": "32:20"
+            },
+            {
+                "title": "Advanced Scraping Techniques",
+                "desc": "Handling pagination, login sessions, and API scraping",
+                "attached": false,
+                "content": "Coming soon..."
+            }
+        ]
+    },
+    "bot_development": {
+        "title": "Bot Development Masterclass",
+        "desc": "Create powerful bots for WhatsApp, Telegram, and Discord from scratch",
+        "icon": "fa-solid fa-robot",
+        "content": [
+            {
+                "title": "WhatsApp Bot Basics",
+                "desc": "Setting up your first WhatsApp bot with whatsapp-web.js",
+                "attached": true,
+                "content": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                "duration": "28:15"
+            },
+            {
+                "title": "Telegram Bot API",
+                "desc": "Deep dive into Telegram Bot API features including inline keyboards",
+                "attached": true,
+                "content": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                "duration": "35:40"
+            },
+            {
+                "title": "Discord Bot Development",
+                "desc": "Creating feature-rich Discord bots with discord.py",
+                "attached": true,
+                "content": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                "duration": "42:10"
+            }
+        ]
+    },
+    "web_development": {
+        "title": "Modern Web Development",
+        "desc": "Build responsive websites with HTML5, CSS3, and JavaScript",
+        "icon": "fa-solid fa-laptop-code",
+        "content": [
+            {
+                "title": "HTML5 Fundamentals",
+                "desc": "Learn semantic HTML5 and best practices",
+                "attached": true,
+                "content": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                "duration": "22:30"
+            },
+            {
+                "title": "CSS3 Mastery",
+                "desc": "Flexbox, Grid, animations, and responsive design",
+                "attached": true,
+                "content": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                "duration": "38:25"
+            },
+            {
+                "title": "JavaScript Essentials",
+                "desc": "Modern JavaScript features and DOM manipulation",
+                "attached": true,
+                "content": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                "duration": "45:50"
+            }
+        ]
+    }
+}
